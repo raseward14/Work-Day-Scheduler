@@ -48,6 +48,9 @@ $(document).ready(function () {
     // good examples on how to use it
     // instructions on how to include moment.js into project
 
+    var startOfDay = moment('08:00', 'hh:mm');
+    console.log(startOfDay);
+
 
 
     // print currentday txt to top of page
