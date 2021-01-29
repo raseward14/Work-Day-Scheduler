@@ -10,13 +10,10 @@ $(document).ready(function () {
     var startOfDay = moment().set('hour', 8);
     console.log(startOfDay);
     // var for how much time has passed since start of day
-    var currentHour = moment().startOf("day").fromNow();
+    var currentHour = moment();
     console.log(currentHour);
 
     var calendar = document.querySelector('.timeblock');
-    var past = true;
-    var present = true;
-    var future = true;
 
     // var for the current day, for Denver tz displayed at top of page
 
@@ -25,8 +22,8 @@ $(document).ready(function () {
         var hour = document.createElement('li');
         var input = document.createElement('input');
         var saveBtn = document.createElement('button');
-        var icon = document.querySelector('.far');
-        saveBtn.innerHTML = [icon];
+        // var timeblock = document.createElement('div');
+        saveBtn.innerHTML = "save";
         input.type = 'text';
         input.name = 'event' + i;
         hour.textContent = workingHours[i];
@@ -35,26 +32,35 @@ $(document).ready(function () {
         hour.append(saveBtn);
         saveBtn.classList.add('saveBtn');
         hour.classList.add('hour');
-        input.setAttribute('style', 'width: 80%; height: 10vh;')
-
+        input.classList.add('textarea');
+        // timeblock.classList.add('time-block');
+    }
+    $().each(hour)
+    if (hour < currentHour) {
+        $(this).removeClass("future");
+        $(this).removeClass("present");
+        $(this).addClass("past");
+    } 
+    else if (hour === currentHour) {
+        $(this).removeClass("future");
+        $(this).removeClass("past");
+        $(this).addClass("present");
+    } 
+    else {
+        $(this).removeClass("past");
+        $(this).removeClass("present");
+        $(this).addClass("future");
     }
 
-    if (hour === past) {
-        
-    } 
-    else if (hour === present) {
-       
-    } 
-    else if (hour === future) {
-        
-    }
-
-    
 
 
+    $(".saveBtn").on("click", function() {
 
-    
-    
+
+        localStorage.setItem();
+    });
+
+
     // append to the previous li item
     // for loop see activity 8 lotto generator
 
