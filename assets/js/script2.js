@@ -7,7 +7,6 @@ $(document).ready(function () {
 
     //standard biz hours are 8am-5pm- 9 blocks
     var workingHours = ['8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm'];
-    // var for how much time has passed since start of day
     // var currentHour = parseInt(moment().format('HH'));
     var currentHour = 13;
     console.log(currentHour);
@@ -15,7 +14,7 @@ $(document).ready(function () {
     var schedule = document.querySelector('.container');
 
 
-    // create element li item for time blocks for that day
+    // create element p item for time blocks for that day
     for (let i = 0; i < workingHours.length; i++) {
         var hour = document.createElement('p');
         var input = document.createElement('input');
@@ -26,7 +25,7 @@ $(document).ready(function () {
         hour.textContent = workingHours[i];
         schedule.append(timeBlock);
         timeBlock.append(hour);
-        hour.appendChild(input);
+        hour.append(input);
         hour.append(saveBtn);
         saveBtn.classList.add('saveBtn');
         hour.classList.add('hour');
@@ -60,16 +59,25 @@ $(document).ready(function () {
     });
     
     
-    $(".saveBtn").on("click", function() {
+    $(".saveBtn").on("click", function(event) {
+        event.preventDefault();
+
+        var comment = document.querySelector('.textarea');
+
         var todo = {
-            time: currentHour.value,
-            item: input,
+            time: hour.textContent,
+            item: input.textarea.textContent
         }
         localStorage.setItem('input', JSON.stringify(todo));
 
+        renderAgenda();
+
     });
 
-    var todos = JSON.parse(localStorage.getItem('input'));
+    function renderAgenda() {
+
+        var todos = JSON.parse(localStorage.getItem('input'));
+    }
 
 });
     // append to the previous li item
