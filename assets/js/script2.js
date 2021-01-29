@@ -7,35 +7,36 @@ $(document).ready(function () {
 
     //standard biz hours are 8am-5pm- 9 blocks
     var workingHours = ['8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm'];
+    
     // var currentHour = parseInt(moment().format('HH'));
     var currentHour = 13;
     console.log(currentHour);
 
-    var schedule = document.querySelector('.container');
 
 
     // create element p item for time blocks for that day
     for (let i = 0; i < workingHours.length; i++) {
+        var schedule = document.querySelector('.container');
         var hour = document.createElement('p');
         var input = document.createElement('input');
         var saveBtn = document.createElement('button');
         var timeBlock = document.createElement('div');
-        saveBtn.innerHTML = "save";
+        saveBtn.innerHTML = 'save';
         input.type = 'text';
         hour.textContent = workingHours[i];
-        schedule.append(timeBlock);
-        timeBlock.append(hour);
-        hour.append(input);
-        hour.append(saveBtn);
+        schedule.appendChild(timeBlock);
+        timeBlock.appendChild(hour);
+        timeBlock.appendChild(input);
+        timeBlock.appendChild(saveBtn);
         saveBtn.classList.add('saveBtn');
         hour.classList.add('hour');
         input.classList.add('textarea');
+        timeBlock.classList.add('row');
         var hr = parseInt(workingHours[i].replace('am', '').replace('pm', ''));
         if (hr < 8) {
             hr = hr + 12;
         };
         $(input).attr('data-hour', hr);
-        // timeBlock.classList.add('row');
     }
 
     $('.textarea').each(function(index, input) {
