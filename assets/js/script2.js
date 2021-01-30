@@ -15,24 +15,30 @@ $(document).ready(function () {
     // create element p item for time blocks for that day
     for (let i = 0; i < workingHours.length; i++) {
         var schedule = document.querySelector('.container');
+        var row = document.createElement('div');
+        var timeBlock = document.createElement('div');
         var hour = document.createElement('p');
         var input = document.createElement('input');
         var saveBtn = document.createElement('button');
-        var timeBlock = document.createElement('div');
-        var row = document.createElement('div');
+        var icon = document.createElement('i')
+
         saveBtn.innerHTML = 'save';
         input.type = 'text';
         hour.textContent = workingHours[i];
+
         schedule.appendChild(row);
         row.appendChild(timeBlock);
         timeBlock.append(hour);
         timeBlock.append(input);
         timeBlock.append(saveBtn);
-        row.classList.add('hour')
-        saveBtn.classList.add('saveBtn');
-        hour.classList.add('time-block');
-        input.classList.add('textarea');
+        // saveBtn.appendChild(icon);
+
+        row.classList.add('time-block');
         timeBlock.classList.add('row');
+        hour.classList.add('hour');
+        input.classList.add('textarea');
+        saveBtn.classList.add('saveBtn');
+        // icon.classList.add('far fa-save')
         var hr = parseInt(workingHours[i].replace('am', '').replace('pm', ''));
         if (hr < 8) {
             hr = hr + 12;
@@ -67,7 +73,7 @@ $(document).ready(function () {
     // print the objects from our array onto the page
     function renderTodos() {
         // insert text content into element that is already there
-        
+
     }
 
     // grab any todos strings from local storage, change back into objects
