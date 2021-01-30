@@ -19,15 +19,18 @@ $(document).ready(function () {
         var input = document.createElement('input');
         var saveBtn = document.createElement('button');
         var timeBlock = document.createElement('div');
+        var row = document.createElement('div');
         saveBtn.innerHTML = 'save';
         input.type = 'text';
         hour.textContent = workingHours[i];
-        schedule.appendChild(timeBlock);
-        timeBlock.appendChild(hour);
-        timeBlock.appendChild(input);
-        timeBlock.appendChild(saveBtn);
+        schedule.appendChild(row);
+        row.appendChild(timeBlock);
+        timeBlock.append(hour);
+        timeBlock.append(input);
+        timeBlock.append(saveBtn);
+        row.classList.add('hour')
         saveBtn.classList.add('saveBtn');
-        hour.classList.add('hour');
+        hour.classList.add('time-block');
         input.classList.add('textarea');
         timeBlock.classList.add('row');
         var hr = parseInt(workingHours[i].replace('am', '').replace('pm', ''));
@@ -58,14 +61,27 @@ $(document).ready(function () {
     });
 
     // array of storedtodos
-    // var storedTodos = [];
+    var todosArray = [];
     // console.log(storedTodos);
 
-    // print todos onto page when refreshed
+    // print the objects from our array onto the page
     function renderTodos() {
-        // value of todoInput printed to input element value
-        // each todo will be one of the storedTodos items indexes
-        var storedTodos = JSON.parse(localStorage.getItem('todos'));
+        // insert text content into element that is already there
+        
+    }
+
+    // grab any todos strings from local storage, change back into objects
+    function init() {
+        // parse to change todos strings back into objects, set these objects equal to a variable todaysTodos
+        var todaysTodos = JSON.parse(localStorage.getItem('todos'));
+
+        // if we look in local storage, find key todos, then put them back into the array todosArray by making that equal to the varialbe we just made for todaysTodos 
+        if (todaysTodos !== null) {
+            todosArray = todaysTodos;
+        }
+
+        // now show them on the screen
+        renderTodos();
     }
 
     // on click event for timeblocks
@@ -76,9 +92,6 @@ $(document).ready(function () {
         var todoInput = $(this).siblings('input').val();
         console.log("The todo is = " + todoInput);
 
-        // todo input is pushed onto stored todos array
-        // storedTodos.push(todoInput);
-
         // stored hour value
         var hour = $(this).siblings('p').text();
         console.log("The hour is = " + hour);
@@ -87,17 +100,24 @@ $(document).ready(function () {
         var storedTodos = {
             time: hour,
             item: todoInput
-        };    
+        };
+
+        // push these storedTodos objects to an array of objects
+        todosArray.push(storedTodos);
 
         // store all todos that have been pushed to the array
-        localStorage.setItem('todos', JSON.stringify(storedTodos));
+        // dont forget to stringify
+        localStorage.setItem('todos', JSON.stringify(todosArray));
 
+        // call renderTodos function that parses local storage, prints todos to page
         renderTodos();
-
     });
-
+    init();
     console.log(document.body);
 });
 
 
-    // saved events stay in local storage after refreshing page
+// saved events stay in local storage after refreshing page
+
+// JSON.parse- takes string and creates object, have a string, i want to change it to an object to print back onto my page
+// JSON.stringify- takes an object anc creates a string
