@@ -20,6 +20,8 @@ The remaining challenges came from Javascript syntax required to tie in the HTML
 ## Credits
 Here are a few resources that helped me get this project knocked out!
 * [Moment.js](https://momentjs.com/)
+* [Dynamic Div](https://video.search.yahoo.com/search/video;_ylt=Awr9DuKrdxVguCAAZWZXNyoA;_ylu=Y29sbwNncTEEcG9zAzEEdnRpZAMEc2VjA3Nj?p=how+to+create+id%27s+in+for+loop+jquery&fr=mcafee#id=2&vid=9a04d345a23e586053974b989fcc6d06&action=view)
+* [Stack Overflow](https://stackoverflow.com/questions/5037854/use-jquery-to-get-siblings)
 
 ## License
 ©2021 Richard Seward. All Rights Reserved.
