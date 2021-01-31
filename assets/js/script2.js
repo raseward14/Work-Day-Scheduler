@@ -8,8 +8,7 @@ $(document).ready(function () {
     //standard biz hours are 8am-5pm- 9 blocks
     var workingHours = ['8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm'];
 
-    var currentHour = parseInt(moment().format('HH'));
-    // var currentHour = 13;
+    // var currentHour = parseInt(moment().format('HH'));
     // console.log(currentHour);
 
     // create element p item for time blocks for that day
