@@ -10,7 +10,7 @@ $(document).ready(function () {
 
     var currentHour = parseInt(moment().format('HH'));
     // var currentHour = 13;
-    console.log(currentHour);
+    // console.log(currentHour);
 
     // create element p item for time blocks for that day
     for (let i = 0; i < workingHours.length; i++) {
@@ -48,7 +48,7 @@ $(document).ready(function () {
 
     $('.textarea').each(function (index, textarea) {
         var hour = parseInt($(this).attr('data-hour'));
-        console.log(typeof hour, typeof currentHour);
+        // console.log(typeof hour, typeof currentHour);
         if (hour < currentHour) {
             $(this).removeClass("future");
             $(this).removeClass("present");
@@ -68,30 +68,110 @@ $(document).ready(function () {
 
     // array of storedtodos
     var todosArray = [];
-    console.log(todosArray);
+    // nothing comes through until the render todos function runs
+    // console.log(todosArray);
 
     // print the objects from our array onto the page
     function renderTodos() {
 
+        // these are the textarea data hours
+        var hr8 = document.querySelector('[data-hour="8"]');
+        // console.log(hr8.dataset.hour);
+        hr8.textContent = '';
+
+        var hr9 = document.querySelector('[data-hour="9"]');
+        // console.log(hr9.dataset.hour);
+        hr9.textContent = '';
+
+        var hr10 = document.querySelector('[data-hour="10"]');
+        // console.log(hr10.dataset.hour);
+        hr10.textContent = '';
+
+        var hr11 = document.querySelector('[data-hour="11"]');
+        // console.log(hr11.dataset.hour);
+        hr11.textContent = '';
+
+        var hr12 = document.querySelector('[data-hour="12"]');
+        // console.log(hr12.dataset.hour);
+        hr12.textContent = '';
+
+        var hr13 = document.querySelector('[data-hour="13"]');
+        // console.log(hr13.dataset.hour);
+        hr13.textContent = '';
+
+        var hr14 = document.querySelector('[data-hour="14"]');
+        // console.log(hr14.dataset.hour);
+        hr14.textContent = '';
+
+        var hr15 = document.querySelector('[data-hour="15"]');
+        // console.log(hr15.dataset.hour);
+        hr15.textContent = '';
+
+        var hr16 = document.querySelector('[data-hour="16"]');
+        // console.log(hr16.dataset.hour);
+        hr16.textContent = '';
+
+        var hr17 = document.querySelector('[data-hour="17"]');
+        // console.log(hr17.dataset.hour);
+        hr17.textContent = '';
+
+        // these are the object times, and object items
+        // console.log(todosArray[0].time);
+        // console.log(todosArray[0].item);
+
+        // console.log(todosArray[1].time);     
+        // console.log(todosArray[1].item);
+
+        // console.log(todosArray[2].time);
+        // console.log(todosArray[2].item);
+
         // for each object in the todosArray, loop through and if the object.time is strictly equal to the hour.textcontent from the html, then make this object.items value equal to the hour's sibling textarea element
        for (let i = 0; i < todosArray.length; i++) {
 
-        // console.log(todosArray[0].time)
-        // console.log(workingHours[0])
-        // console.log(textarea.dataset.hour)
-        // console.log(todosArray[0].item)
-      
+        // console.log(todosArray);
 
-        // console.log(todosArray[1].time)
-        // console.log(todosArray[1].item)
+        var objTime = todosArray[i].time
+        var objItem = todosArray[i].item
 
-        // console.log(todosArray[2].time)
-        // console.log(todosArray[2].item)
+        // make sure the array times are coming through
+        // console.log('marker');
+        // console.log(todosArray[i].time);
+        // hr 10 is logging the element, not the data attribute
+        // console.log(hr10);
 
-       }
+        // .dataset.hour gets the value of the data attribute to match with the object data hour
+        if (objTime == hr8.dataset.hour) {
+            hr8.textContent = objItem;
+        }
+        else if (objTime === hr9.dataset.hour) {
+            hr9.textContent = objItem;
+        }
+        else if (objTime == hr10.dataset.hour) {
+            hr10.textContent = objItem;
+        }
+        else if (objTime === hr11.dataset.hour) {
+            hr11.textContent = objItem;
+        }
+        else if (objTime === hr12.dataset.hour) {
+            hr12.textContent = objItem;
+        }
+        else if (objTime === hr13.dataset.hour) {
+            hr13.textContent = objItem;
+        }
+        else if (objTime === hr14.dataset.hour) {
+            hr14.textContent = objItem;
+        }
+        else if (objTime === hr15.dataset.hour) {
+            hr15.textContent = objItem;
+        }
+        else if (objTime === hr16.dataset.hour) {
+            hr16.textContent = objItem;
+        }
+        else {
+            hr17.textContent = objItem;
+        } 
 
-        // todo.textContent = todosArray[0].item;
-       
+       }       
     }
 
     // grab any todos strings from local storage, change back into objects
@@ -105,7 +185,6 @@ $(document).ready(function () {
         } else {
             return;
         }
-
         // now show them on the screen
         renderTodos();
     }
@@ -141,9 +220,9 @@ $(document).ready(function () {
         renderTodos();
     });
     
-    console.log(document.body);
+    // console log body to see how elements are structured
+    // console.log(document.body);
 });
-
 
 // saved events stay in local storage after refreshing page
 
