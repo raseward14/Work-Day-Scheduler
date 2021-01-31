@@ -18,35 +18,35 @@ $(document).ready(function () {
         var row = document.createElement('div');
         var timeBlock = document.createElement('div');
         var hour = document.createElement('p');
-        var input = document.createElement('input');
+        var textarea = document.createElement('textarea');
         var saveBtn = document.createElement('button');
         // var icon = document.createElement('i')
 
         saveBtn.innerHTML = 'save';
-        input.type = 'text';
+        // textarea.type = 'text';
         hour.textContent = workingHours[i];
 
         schedule.appendChild(row);
         row.appendChild(timeBlock);
         timeBlock.append(hour);
-        timeBlock.append(input);
+        timeBlock.append(textarea);
         timeBlock.append(saveBtn);
         // saveBtn.appendChild(icon);
 
         row.classList.add('time-block');
         timeBlock.classList.add('row');
         hour.classList.add('hour');
-        input.classList.add('textarea');
+        textarea.classList.add('textarea');
         saveBtn.classList.add('saveBtn');
         // icon.classList.add('far fa-save')
         var hr = parseInt(workingHours[i].replace('am', '').replace('pm', ''));
         if (hr < 8) {
             hr = hr + 12;
         };
-        $(input).attr('data-hour', hr);
+        $(textarea).attr('data-hour', hr);
     }
 
-    $('.textarea').each(function (index, input) {
+    $('.textarea').each(function (index, textarea) {
         var hour = parseInt($(this).attr('data-hour'));
         console.log(typeof hour, typeof currentHour);
         if (hour < currentHour) {
@@ -72,7 +72,17 @@ $(document).ready(function () {
 
     // print the objects from our array onto the page
     function renderTodos() {
-        todosArray
+
+        var todo = document.querySelector('.textarea');
+        todo.textContent = todosArray[0].item;
+        console.log(todo);
+
+        // for each object in the todosArray, loop through and if the object.time is strictly equal to the hour.textcontent from the html, then make this object.items value equal to the hour's sibling textarea element
+        for (let i = 0; i < todosArray.length; i++) {
+
+            
+            
+        }
        
     }
 
@@ -97,7 +107,7 @@ $(document).ready(function () {
         event.preventDefault();
 
         // store input value
-        var todoInput = $(this).siblings('input').val();
+        var todoInput = $(this).siblings('textarea').val();
         console.log("The todo is = " + todoInput);
 
         // stored hour value
