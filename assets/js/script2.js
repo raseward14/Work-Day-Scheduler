@@ -73,16 +73,24 @@ $(document).ready(function () {
     // print the objects from our array onto the page
     function renderTodos() {
 
-        var todo = document.querySelector('.textarea');
-        todo.textContent = todosArray[0].item;
-        console.log(todo);
-
         // for each object in the todosArray, loop through and if the object.time is strictly equal to the hour.textcontent from the html, then make this object.items value equal to the hour's sibling textarea element
-        for (let i = 0; i < todosArray.length; i++) {
+       for (let i = 0; i < todosArray.length; i++) {
 
-            
-            
-        }
+        // console.log(todosArray[0].time)
+        // console.log(workingHours[0])
+        // console.log(textarea.dataset.hour)
+        // console.log(todosArray[0].item)
+      
+
+        // console.log(todosArray[1].time)
+        // console.log(todosArray[1].item)
+
+        // console.log(todosArray[2].time)
+        // console.log(todosArray[2].item)
+
+       }
+
+        // todo.textContent = todosArray[0].item;
        
     }
 
@@ -94,8 +102,9 @@ $(document).ready(function () {
         // if we look in local storage, find key todos, then put them back into the array todosArray by making that equal to the varialbe we just made for todaysTodos 
         if (todaysTodos !== null) {
             todosArray = todaysTodos;
+        } else {
+            return;
         }
-        console.log(todosArray);
 
         // now show them on the screen
         renderTodos();
@@ -111,7 +120,8 @@ $(document).ready(function () {
         console.log("The todo is = " + todoInput);
 
         // stored hour value
-        var hour = $(this).siblings('p').text();
+        var hour = $(this).siblings('textarea').attr('data-hour');
+
         console.log("The hour is = " + hour);
 
         // object with input value and hour
