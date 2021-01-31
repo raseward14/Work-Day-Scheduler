@@ -14,7 +14,7 @@ textarea{
 }
 
 div.row input {
-  width: 60vw;
+  width: 45vw;
   color: #000000;
   padding: 15px;
 }
@@ -46,9 +46,9 @@ div.row input {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
-  width: 10vw;
+  width: 5vw;
   text-align: right;
-  padding: 10px;
+  padding: 12px;
 }
 
 .past {
@@ -72,7 +72,7 @@ div.row input {
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
-  width: 8vw;
+  width: 5vw;
 }
 
 .saveBtn i:hover {

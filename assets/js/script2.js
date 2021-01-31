@@ -20,7 +20,7 @@ $(document).ready(function () {
         var hour = document.createElement('p');
         var input = document.createElement('input');
         var saveBtn = document.createElement('button');
-        var icon = document.createElement('i')
+        // var icon = document.createElement('i')
 
         saveBtn.innerHTML = 'save';
         input.type = 'text';
@@ -68,12 +68,12 @@ $(document).ready(function () {
 
     // array of storedtodos
     var todosArray = [];
-    // console.log(storedTodos);
+    console.log(todosArray);
 
     // print the objects from our array onto the page
     function renderTodos() {
-        // insert text content into element that is already there
-
+        todosArray
+       
     }
 
     // grab any todos strings from local storage, change back into objects
@@ -85,10 +85,12 @@ $(document).ready(function () {
         if (todaysTodos !== null) {
             todosArray = todaysTodos;
         }
+        console.log(todosArray);
 
         // now show them on the screen
         renderTodos();
     }
+    init();
 
     // on click event for timeblocks
     $(".saveBtn").on("click", function (event) {
@@ -118,7 +120,7 @@ $(document).ready(function () {
         // call renderTodos function that parses local storage, prints todos to page
         renderTodos();
     });
-    init();
+    
     console.log(document.body);
 });
 
