@@ -8,8 +8,8 @@ $(document).ready(function () {
     //standard biz hours are 8am-5pm- 9 blocks
     var workingHours = ['8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm'];
 
-    // var currentHour = parseInt(moment().format('HH'));
-    // console.log(currentHour);
+    var currentHour = parseInt(moment().format('HH'));
+    console.log(currentHour);
 
     // create element p item for time blocks for that day
     for (let i = 0; i < workingHours.length; i++) {
@@ -181,7 +181,8 @@ $(document).ready(function () {
         // if we look in local storage, find key todos, then put them back into the array todosArray by making that equal to the varialbe we just made for todaysTodos 
         if (todaysTodos !== null) {
             todosArray = todaysTodos;
-        } else {
+        } 
+        else {
             return;
         }
         // now show them on the screen
